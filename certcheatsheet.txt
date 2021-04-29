@@ -1,0 +1,13 @@
+-- PowerShell
+$cert = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname localhost
+
+$pwd = ConvertTo-SecureString -String ‘passw0rd!’ -Force -AsPlainText
+
+$path = 'cert:\localMachine\my\' + $cert.thumbprint
+
+Export-PfxCertificate -cert $path -FilePath c:\users\admin\downloads\certcert.pfx -Password $pwd
+
+-- Open SSL
+openssl req -x509 -days 5000 -newkey rsa:4096 -nodes -sha256 -keyout private.pem -out cert.crt
+
+openssl rsa -in private.pem -pubout -out public.pem

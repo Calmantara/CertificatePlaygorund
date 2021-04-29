@@ -1,0 +1,12 @@
+<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" connectionTimeout="20000" maxConnections="10000" maxThreads="200" SSLEnabled="true" scheme="https" secure="true">
+    <UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />
+    <SSLHostConfig>
+        <Certificate certificateKeyFile="/server.key" certificateFile="/server.key" type="RSA" />
+    </SSLHostConfig>
+</Connector>
+<Connector port="8443" protocol="org.apache.coyote.http11.Http11AprProtocol" connectionTimeout="20000" maxConnections="10000" maxThreads="150" SSLEnabled="true" scheme="https" secure="true">
+    <UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />
+    <SSLHostConfig>
+        <Certificate certificateKeyFile="/server.key" certificateFile="/server.crt" type="RSA" />
+    </SSLHostConfig>
+</Connector>

@@ -1,0 +1,42 @@
+sudo docker run --detach \
+  --hostname "192.168.56.106:6980" \
+  --publish 6443:6443 --publish 6980:6980 --publish 22:22 \
+  --name gitlab \
+  --restart always \
+  --volume $GITLAB_HOME/gitlab/config:/etc/gitlab \
+  --volume $GITLAB_HOME/gitlab/logs:/var/log/gitlab \
+  --volume $GITLAB_HOME/gitlab/data:/var/opt/gitlab \
+  gitlab/gitlab-ce:latest
+  
+docker exec -it containerid sh
+
+------------------
+
+sudo docker run --detach \
+-u jenkins \
+--name myjenkins \
+--restart always \
+-p 8080:8080 -p 50000:50000 \
+-v /jenkins:/var/jenkins_home \
+jenkins
+
+-----
+sudo docker run --detach --restart always --name=mytelegraf --net=myinfluxdbnet -v $PWD/telegraf:/var telegraf
+
+sudo docker run --detach --restart always --name=myinfluxdb --net=myinfluxdbnet -p 8086:8086 \
+      -v $PWD/influxdb:/var/lib/influxdb \
+      influxdb
+
+sudo docker run --detach --name mychronograf -p 8888:8888 \
+      -v $PWD:/var/lib/chronograf \
+      chronograf
+
+----
+sudo docker run -it --detach --name mymosquitto -p 1883:1883 eclipse-mosquitto
+
+---
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=asdqwe123' -e 'MSSQL_PID=Express' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu 
+
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=asdqwe123' -e 'MSSQL_PID=Express' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu 
+
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=asdqwe123' -p 1433:1433 -d microsoft/mssql-server-linux 

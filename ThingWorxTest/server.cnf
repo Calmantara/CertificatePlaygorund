@@ -1,0 +1,14 @@
+[req]
+default_bits = 4096
+prompt = no
+default_md = sha256
+distinguished_name = dn 
+
+[dn]
+C=ID
+ST=West Java
+L=Bandung
+O=CAD-IT Consultants
+OU=IoT Centre
+emailAddress=rizqi.cahyo@caditglobal.com
+CN = TechnipFMC WFL Node-Red Server
